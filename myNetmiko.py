@@ -1,5 +1,4 @@
 import netmiko
-import json
 
 import netmiko.exceptions
 

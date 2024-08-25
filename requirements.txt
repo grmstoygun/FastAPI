@@ -1,0 +1,3 @@
+fastapi[standard]==0.112.1
+netmiko==4.4.0
+pydantic==2.8.2
