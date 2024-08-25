@@ -5,6 +5,9 @@ import myNetmiko
 class CommandRequest(BaseModel):
     command : str
 
+class CommandResponse(BaseModel):
+    message: str
+    
 app = FastAPI()
 
 @app.get("/")
@@ -12,7 +15,6 @@ async def root():
     return {"Hello World"}
 
 @app.post("/command")
-async def create_command(command:CommandRequest):
+async def create_command(command:CommandRequest) -> CommandResponse:
     netmiko_response =  await myNetmiko.sendCommand(command.command)
     return netmiko_response 
-
