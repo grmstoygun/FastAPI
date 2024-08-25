@@ -1,16 +1,16 @@
-FROM python:3.9
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-WORKDIR /code
+# Set the working directory in the container
+WORKDIR /FastAPI
 
-COPY ./requirements.txt /code/requirements.txt
+# Copy the current directory contents into the container at /app
+COPY . /FastAPI
 
-# pip ve setuptools'u güncelliyoruz
-RUN pip install --no-cache-dir --upgrade pip setuptools
+# Install any needed dependencies specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Gereken paketleri yüklüyoruz
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+# Run api.py when the container launches
+CMD ["fastapi", "run", "api.py", "--port", "80"]
 
-COPY ./app /code/app
 
-# Uygulamayı uvicorn ile çalıştırıyoruz
-CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "80"]

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-import myNetmiko
+import myNetmiko as myNetmiko
 
 class CommandRequest(BaseModel):
     command : str

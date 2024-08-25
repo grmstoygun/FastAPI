@@ -4,12 +4,13 @@ import json
 import netmiko.exceptions
 
 connectionConfig = {
-    'ip' : '172.20.20.6', 
+    'ip' : ' 172.20.20.2',
     'device_type' : 'nokia_srl',
     'username' : 'admin',
     'password' : 'NokiaSrl1!',
 }
-
+#with open("./nodes_commands.txt", "r") as f:
+    #f.readlines()'
 netmiko_exceptions = (netmiko.exceptions.NetMikoTimeoutException, netmiko.exceptions.NetMikoAuthenticationException,
                       netmiko.exceptions.SSHException)
 
@@ -22,4 +23,3 @@ async def sendCommand(command):
     except netmiko_exceptions as e:
         return f"Exception: {str(e)}"
     
-
